@@ -24,7 +24,6 @@ int main(){
     for (int r = 0; r < N; r++) {
         cin >> mass[r];
     }
-    std::cout << std::endl;
     srand(time(NULL));
 
     shuffle(mass, N);
