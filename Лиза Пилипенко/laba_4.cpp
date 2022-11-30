@@ -29,6 +29,6 @@ int main(){
     shuffle(mass, N);
     for (int j = 0; j < N; ++j)
         cout << mass[j];
-
+    delete[] mass;
     return 0;
 }
