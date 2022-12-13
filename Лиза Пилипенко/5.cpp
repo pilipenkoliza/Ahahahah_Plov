@@ -1,88 +1,52 @@
 #include <iostream>
-#include <math.h>
 
 using namespace std;
-void Sum() {
-    int sum = 0;
-    int n, a;
-    cout << "Колличество чисел: ";
-    cin >> n;
-    cout << "Введите числа: " << endl;
-    for (int i = 0; i < n; i++) {
-        cin >> a;
-        sum = sum + a;
-    }
-    cout << "Результат: " << sum << endl;
+
+struct primer {
+	int odin;
+	int dva;
+	int znak;
+};
+
+typedef int (*Function)(int a, int b);
+
+int Plus(int a, int b)
+{
+	return a + b;
 }
-void Razn() {
-    int a, b, razn;
-    cout << "Введите два числа: ";
-    cin >> a >> b;
-    razn = a - b;
-    cout << "Результат: " << razn << endl;
+
+int Minus(int a, int b)
+{
+	return a - b;
 }
-void Ymn() {
-    int ymn = 1;
-    int n, a;
-    cout << "Колличество чисел: ";
-    cin >> n;
-    cout << "Введите числа: " << endl;
-    for (int i = 0; i < n; i++) {
-        cin >> a;
-        ymn = ymn * a;
-    }
-    cout << "Результат: " << ymn << endl;
+
+int Ymn(int a, int b)
+{
+	return a * b;
 }
-void Del() {
-    int a, b;
-    float delen = 0;
-    cout << "Введите два числа: ";
-    cin >> a >> b;
-    delen = a / b;
-    cout << "Результат: " << delen << endl;
+
+int Del(int a, int b)
+{
+	return a / b;
 }
-void Sqrt() {
-    int a, sq;
-    cout << "Введите число для нахождения его квадрата: ";
-    cin >> a;
-    sq = a * a;
-    cout << "Результат: " << sq << endl;
-}
-void Koren() {
-    int a;
-    float kv;
-    cout << "Введите число для нахождения его корня: ";
-    cin >> a;
-    kv = sqrt(a);
-    cout << "Результат: " << kv << endl;
-}
-int main() {
-    setlocale(LC_ALL, "Russian");
-    char sign;
-    cout << "Введите знак оператора: ";
-    cin >> sign;
-    switch (sign) {
-    case '+':
-        Sum();
-        break;
-    case '-':
-        Razn();
-        break;
-    case '*':
-        Ymn();
-        break;
-    case '/':
-        Del();
-        break;
-    case 'kv':
-        Sqrt();
-        break;
-    case 'sqrt':
-        Koren();
-        break;
-    default:
-        cout << "Ошибка. Оператор не опознан." << endl;
-        break;
-    }
-    return 0;
+
+Function operators[] = {Plus, Minus, Ymn ,Del};
+
+int main()
+{
+	setlocale(LC_ALL, "rus");
+	int otvet;
+
+	primer kalkulator;
+
+	cout << "Первое число: ";
+	cin >> kalkulator.odin;
+	cout << "Второе число: ";
+	cin >> kalkulator.dva;
+	cout << "Оператор ( 0 = + , 1 = - , 2 = * , 3 = / ) : ";
+	cin >> kalkulator.znak;
+
+	otvet = operators[kalkulator.znak](kalkulator.odin, kalkulator.dva);
+
+	cout << "Ответ: " << otvet << endl;
 }
