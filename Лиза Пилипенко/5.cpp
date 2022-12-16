@@ -8,24 +8,24 @@ struct primer {
 	int znak;
 };
 
-typedef int (*Function)(int a, int b);
+typedef float (*Function)(float a, float b);
 
-int Plus(int a, int b)
+float Plus(float a, float b)
 {
 	return a + b;
 }
 
-int Minus(int a, int b)
+float Minus(float a, float b)
 {
 	return a - b;
 }
 
-int Ymn(int a, int b)
+float Ymn(float a, float b)
 {
 	return a * b;
 }
 
-int Del(int a, int b)
+float Del(float a, float b)
 {
 	return a / b;
 }
@@ -35,7 +35,7 @@ Function operators[] = {Plus, Minus, Ymn ,Del};
 int main()
 {
 	setlocale(LC_ALL, "rus");
-	int otvet;
+	float otvet;
 
 	primer kalkulator;
 
@@ -49,4 +49,5 @@ int main()
 	otvet = operators[kalkulator.znak](kalkulator.odin, kalkulator.dva);
 
 	cout << "Ответ: " << otvet << endl;
+	return 0;
 }
